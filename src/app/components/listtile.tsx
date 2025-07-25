@@ -1,7 +1,7 @@
 "use client"
 
 import { X } from "@deemlol/next-icons";
-import { Todo } from "../models/todo";
+import { Todo } from "../../models/todo";
 import { deleteTodosAction } from "../actions/todoActions";
 import { Calendar } from "lucide-react";
 

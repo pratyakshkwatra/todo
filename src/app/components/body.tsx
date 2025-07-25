@@ -1,5 +1,5 @@
 import ListTile from "./listtile";
-import { Todo } from "../models/todo";
+import { Todo } from "../../models/todo";
 
 export default function Body({ items }: { items: Array<Todo> }) {
   return items.length !== 0 ? (

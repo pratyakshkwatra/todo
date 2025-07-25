@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { TodoService } from "../services/todoService";
+import { TodoService } from "../../services/todoService";
 
 const todoService: TodoService = new TodoService();
 
