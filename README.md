@@ -13,9 +13,10 @@ A clean and minimal **black and white themed Todo application** built with Next.
 
 ## Roadmap
 
-* [ ] Add input for dynamic todo titles
+* [x] Add input for dynamic todo titles
 * [ ] Edit todos
-* [ ] Database integration
+* [x] Database integration
+* [x] Add Transitions
 
 ---
 
