@@ -4,7 +4,7 @@ import { Plus } from "@deemlol/next-icons";
 import { motion } from "motion/react";
 import { useRouter } from "next/navigation";
 
-export default function AppBar({ showTrailing }: { showTrailing: Boolean }) {
+export default function AppBar({ showTrailing }: { showTrailing: boolean }) {
   const router = useRouter();
 
   return (
