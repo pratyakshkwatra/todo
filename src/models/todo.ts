@@ -1,11 +1,11 @@
 export class Todo {
-  index: number;
+  id: number;
   title: string;
   createdAt: Date;
 
-  constructor(index: number, title: string) {
-    this.index = index;
+  constructor(id: number, title: string, createdAt: Date) {
+    this.id = id;
     this.title = title;
-    this.createdAt = new Date();
+    this.createdAt = createdAt;
   }
 }
