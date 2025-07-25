@@ -2,6 +2,8 @@ import AppBar from "../components/appbar";
 import Body from "../components/body";
 import { getTodosAction } from "../actions/todoActions";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const todos = await getTodosAction();
 
