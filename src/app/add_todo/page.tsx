@@ -4,6 +4,7 @@ import { useState } from "react";
 import AppBar from "@/components/appbar";
 import { TextCursorInput } from "lucide-react";
 import { addTodoAction } from "@/actions/todoActions";
+import { motion } from "motion/react";
 
 export default function AddTodoPage() {
   const [title, setTitle] = useState("");
@@ -22,7 +23,12 @@ export default function AddTodoPage() {
   return (
     <div className="m-2 flex flex-col h-screen bg-neutral-50">
       <AppBar showTrailing={false} />
-      <div className="mt-6 flex flex-col items-center justify-center flex-1 px-4">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+        className="mt-6 flex flex-col items-center justify-center flex-1 px-4"
+      >
         <div className="w-full flex flex-col gap-3">
           <label className="flex flex-col-reverse relative group">
             <input
@@ -58,7 +64,7 @@ export default function AddTodoPage() {
         >
           Add Todo
         </button>
-      </div>
+      </motion.div>
     </div>
   );
 }
