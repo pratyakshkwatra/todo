@@ -1,3 +1,5 @@
+"use client"
+
 import ListTile from "./listtile";
 import { Todo } from "../models/todo";
 import { AnimatePresence } from "motion/react";
