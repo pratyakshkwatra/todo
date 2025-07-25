@@ -1,6 +1,6 @@
 import ListTile from "./listtile";
 import { Todo } from "../models/todo";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 
 export default function Body({ items }: { items: Array<Todo> }) {
   return items.length !== 0 ? (
