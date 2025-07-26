@@ -14,17 +14,25 @@ export default function EditTodoPage() {
   const id = Number(params.get("id") ?? -1);
   const [title, setTitle] = useState(params.get("prevTitle") ?? "");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleEditTodo = async () => {
-    console.log(id);
-    if (id != -1) {
-      if (!title.trim()) {
-        setError("Todo title cannot be empty");
-        return;
-      }
+    if (loading) return;
+
+    if (id === -1) return;
+
+    if (!title.trim()) {
+      setError("Todo title cannot be empty");
+      return;
+    }
+
+    try {
+      setLoading(true);
       setError("");
       await editTodoAction(id, title);
       setTitle("");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -34,7 +42,7 @@ export default function EditTodoPage() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease: "easeInOut" }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
         className="mt-6 flex flex-col items-center justify-center flex-1 px-4"
       >
         <div className="w-full flex flex-col gap-3">
@@ -66,11 +74,27 @@ export default function EditTodoPage() {
 
           {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
         </div>
+
         <button
           onClick={handleEditTodo}
-          className="mt-4 w-full py-2 bg-neutral-900 text-white font-bold rounded-lg text-xl hover:bg-neutral-800 focus:border-neutral-800 transition duration-200"
+          disabled={loading}
+          className={`mt-4 w-full py-2 h-12 bg-neutral-900 text-white font-bold rounded-lg text-xl transition duration-200 ${
+            loading ? "opacity-70 cursor-not-allowed" : "hover:bg-neutral-800"
+          }`}
         >
-          Edit Todo
+          <motion.div
+            key={loading ? "loading" : "text"}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            className="flex justify-center items-center"
+          >
+            {loading ? (
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+            ) : (
+              "Edit Todo"
+            )}
+          </motion.div>
         </button>
       </motion.div>
     </div>

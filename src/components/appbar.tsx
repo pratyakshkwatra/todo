@@ -19,7 +19,7 @@ export default function AppBar({ showTrailing }: { showTrailing: boolean }) {
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease: "easeInOut" }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
         onClick={() => router.push("/")}
         style={{ cursor: "pointer" }}
         className="text-white text-xl font-bold"
@@ -31,7 +31,7 @@ export default function AppBar({ showTrailing }: { showTrailing: boolean }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         style={{ cursor: "pointer" }}
-        transition={{ delay: 0.25, duration: 1, ease: "easeInOut" }}
+        transition={{ duration: 2, ease: "easeIn" }}
       >
         <SignedOut>
           <SignInButton>

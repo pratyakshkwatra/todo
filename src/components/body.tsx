@@ -17,7 +17,7 @@ export default function Body({ items }: { items: Array<Todo> }) {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1, ease: "easeInOut" }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
       className="h-full flex flex-col items-center justify-center"
     >
       <p className="text-center text-neutral-900 font-bold text-3xl">
