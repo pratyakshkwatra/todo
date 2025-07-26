@@ -1,12 +1,14 @@
 "use client";
 
-import { X } from "@deemlol/next-icons";
 import { Todo } from "../models/todo";
-import { deleteTodosAction } from "../actions/todoActions";
-import { Calendar } from "lucide-react";
+import { deleteTodosAction, editTodoAction } from "../actions/todoActions";
+import { Calendar, Pencil, X } from "lucide-react";
 import { motion } from "motion/react";
+import { useRouter } from "next/navigation";
 
 export default function ListTile({ todo }: { todo: Todo }) {
+  const router = useRouter();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -28,7 +30,16 @@ export default function ListTile({ todo }: { todo: Todo }) {
           {todo.title == "Test" ? "" : todo.title}
         </p>
       </div>
-      <X onClick={async () => await deleteTodosAction({ id: todo.id })}></X>
+      <div className="flex gap-4 items-center justify-center">
+        <Pencil
+          size={24}
+          onClick={async () => router.push(`/edit_todo?id=${todo.id}&prevTitle=${todo.title}`)}
+        ></Pencil>
+        <X
+          size={30}
+          onClick={async () => await deleteTodosAction({ id: todo.id })}
+        ></X>
+      </div>
     </motion.div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { Plus } from "@deemlol/next-icons";
+import { Plus } from "lucide-react";
 import { motion } from "motion/react";
 import { useRouter } from "next/navigation";
 
