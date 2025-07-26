@@ -7,12 +7,12 @@ import { editTodoAction } from "@/actions/todoActions";
 import { motion } from "motion/react";
 import { useSearchParams } from "next/navigation";
 
-export default function EditTodoPage() {
-  const searchParams = useSearchParams();
-  const id = Number(searchParams.get("id") || -1);
-  const prevTitle = searchParams.get("prevTitle");
+export const dynamic = "force-dynamic";
 
-  const [title, setTitle] = useState(prevTitle ?? "");
+export default function EditTodoPage() {
+  const params = useSearchParams();
+  const id = Number(params.get("idRec") ?? -1);
+  const [title, setTitle] = useState(params.get("prevTitle") ?? "");
   const [error, setError] = useState("");
 
   const handleEditTodo = async () => {

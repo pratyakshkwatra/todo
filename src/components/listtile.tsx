@@ -1,14 +1,12 @@
 "use client";
 
 import { Todo } from "../models/todo";
-import { deleteTodosAction, editTodoAction } from "../actions/todoActions";
+import { deleteTodosAction } from "../actions/todoActions";
 import { Calendar, Pencil, X } from "lucide-react";
 import { motion } from "motion/react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function ListTile({ todo }: { todo: Todo }) {
-  const router = useRouter();
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -31,10 +29,17 @@ export default function ListTile({ todo }: { todo: Todo }) {
         </p>
       </div>
       <div className="flex gap-4 items-center justify-center">
-        <Pencil
-          size={24}
-          onClick={async () => router.push(`/edit_todo?id=${todo.id}&prevTitle=${todo.title}`)}
-        ></Pencil>
+        <Link
+          href={{
+            pathname: "/edit_todo",
+            query: {
+              id: todo.id,
+              prevTitle: todo.title,
+            },
+          }}
+        >
+          <Pencil size={24}></Pencil>
+        </Link>
         <X
           size={30}
           onClick={async () => await deleteTodosAction({ id: todo.id })}
