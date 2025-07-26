@@ -8,9 +8,15 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
-    "check": "npm run lint && npm run type-check && npm run build"
+    "check": "npm run lint && npm run type-check && npm run build",
+    "db:push": "drizzle-kit push",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
+    "db:drop": "drizzle-kit drop"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.27.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-time": "^4.0.0",

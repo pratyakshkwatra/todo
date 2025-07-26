@@ -1,5 +1,12 @@
 "use client";
 
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
 import { Plus } from "lucide-react";
 import { motion } from "motion/react";
 import { useRouter } from "next/navigation";
@@ -8,7 +15,7 @@ export default function AppBar({ showTrailing }: { showTrailing: boolean }) {
   const router = useRouter();
 
   return (
-    <div className="bg-neutral-900 p-4 rounded-xl flex justify-between">
+    <div className="bg-neutral-900 p-4 rounded-xl flex justify-between items-center">
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -19,19 +26,30 @@ export default function AppBar({ showTrailing }: { showTrailing: boolean }) {
       >
         Todo App
       </motion.p>
-      {showTrailing ? (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          style={{ cursor: "pointer" }}
-          transition={{ delay: 0.25, duration: 1, ease: "easeInOut" }}
-        >
-          <Plus
-            className="text-white"
-            onClick={() => router.push("/add_todo")}
-          ></Plus>
-        </motion.div>
-      ) : null}
+      <motion.div
+        className="flex gap-4 items-center justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        style={{ cursor: "pointer" }}
+        transition={{ delay: 0.25, duration: 1, ease: "easeInOut" }}
+      >
+        <SignedOut>
+          <SignInButton>
+            <button className="bg-white text-ceramic-white rounded-full font-medium text-sm h-8 px-2 cursor-pointer">
+              Sign In
+            </button>
+          </SignInButton>
+        </SignedOut>
+        <SignedIn>
+          {showTrailing ? (
+            <Plus
+              className="text-white"
+              onClick={() => router.push("/add_todo")}
+            ></Plus>
+          ) : null}
+          <UserButton />
+        </SignedIn>
+      </motion.div>
     </div>
   );
 }
