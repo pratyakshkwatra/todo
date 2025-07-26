@@ -11,11 +11,12 @@ export const dynamic = "force-dynamic";
 
 export default function EditTodoPage() {
   const params = useSearchParams();
-  const id = Number(params.get("idRec") ?? -1);
+  const id = Number(params.get("id") ?? -1);
   const [title, setTitle] = useState(params.get("prevTitle") ?? "");
   const [error, setError] = useState("");
 
   const handleEditTodo = async () => {
+    console.log(id);
     if (id != -1) {
       if (!title.trim()) {
         setError("Todo title cannot be empty");
