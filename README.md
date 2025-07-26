@@ -19,6 +19,7 @@ A clean and minimal **black and white themed Todo application** built with Next.
 * [x] Edit todos
 * [x] Database integration
 * [x] Add Transitions
+* [x] Add Todo Timeline
 
 ---
 
