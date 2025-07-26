@@ -29,7 +29,7 @@ export default function RootLayout({
         <head>
           <script
             defer
-            data-domain="analytics.pratyakshkwatra.com"
+            data-domain="todo.pratyakshkwatra.com"
             src="https://analytics.pratyakshkwatra.com/js/script.file-downloads.hash.outbound-links.js"
           ></script>
         </head>
